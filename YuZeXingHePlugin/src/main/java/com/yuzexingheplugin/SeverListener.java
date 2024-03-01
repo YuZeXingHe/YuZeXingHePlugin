@@ -43,7 +43,7 @@ public class SeverListener implements Listener {
     public void Player_Quit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
         String player_name = player.getName();
-        event.setQuitMessage(ChatColor.YELLOW + "离开服务器：" + player_name + "离开了服务器！");
+        event.setQuitMessage(ChatColor.YELLOW + "离开服务器：" + ChatColor.AQUA + player_name + ChatColor.YELLOW + "离开了服务器！");
     }
 
     @EventHandler
