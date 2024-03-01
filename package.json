@@ -1,0 +1,17 @@
+{
+  "name": "yuzexingheplugin",
+  "version": "1.8.2",
+  "description": "专为Minecraft轻语生存服打造的YuZeXingHePlugin插件",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YuZeXingHe/YuZeXingHePlugin"
+  },
+  "author": "YuZeXingHe",
+  "dependencies": {
+    "express": "^4.18.3"
+  }
+}
