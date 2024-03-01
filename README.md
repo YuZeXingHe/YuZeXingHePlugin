@@ -10,7 +10,6 @@
 ### 轻语生存服务器相关
 既然本插件专为Minecrft轻语生存服务器开发，那就顺带帮服主宣传一下服务器，Minecraft轻语生存服务器是由某位摆烂大佬自己闲的没事干然后突发奇想搞的一个生电服务器，服务器目前处于开荒阶段（小声BB：整个服务器就服主和她俩闺蜜）。如果你最近实在闲的无聊，可以加入服务器QQ群：674342880跟我们一起摆烂，服务器的版本为Java版1.20.1+版本（Java和BE互通）。
 ### 下载本插件
-可以直接从仓库中下载YuZeXingHePlugin.jar文件，亦或者在此处下载：
-[Download Latest Version](https://github.com/YuZeXingHe/YuZeXingHePlugin/releases/tag/)
+可以直接从仓库中下载，亦或者在Releases下载。
 ### 关于作者
 插件作者：YuZeXingHe（废话），是一个极其摆烂的摸鱼怪，该插件由作者本人独自完成（摆烂到发霉的一个打发时间的想法）。
