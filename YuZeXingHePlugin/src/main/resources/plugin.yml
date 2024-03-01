@@ -1,0 +1,11 @@
+name: YuZeXingHePlugin
+version: '${version}'
+main: com.yuzexingheplugin.YuZeXingHePlugin
+api-version: '1.20'
+
+commands:
+  ui:
+    description: "打开YuZeXingHe-Plugin的UI界面指令"
+    usage:
+      - /ui <UIopen>
+      - /ui <help>
