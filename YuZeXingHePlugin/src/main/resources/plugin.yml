@@ -6,12 +6,6 @@ api-version: '1.20'
 commands:
   ui:
     description: "打开YuZeXingHe-Plugin的UI"
-    usage:
-      - "/ui <UIopen>"
 
   uiconfig:
     description: "配置文件修改和加载相关指令"
-    usage:
-      - "/uiconfig <config_command>"
-      - "/uiconfig <config_command> <config_changes>"
-      - "/uiconfig <config_command> <config_changes> <config_change>"
