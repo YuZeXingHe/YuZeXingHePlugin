@@ -3,14 +3,12 @@ package com.yuzexingheplugin.Plugin_UI;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
-import org.bukkit.command.TabExecutor;
+import org.bukkit.command.*;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
@@ -21,6 +19,7 @@ public class OpenUI_CMD implements CommandExecutor, TabExecutor {
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         Player player = (Player) sender;
         String UIopen = args [0];
+        Plugin config = com.yuzexingheplugin.YuZeXingHePlugin.getProvidingPlugin(com.yuzexingheplugin.YuZeXingHePlugin.class);
         if (UIopen.equals("open")) {
             sender.sendMessage(ChatColor.GREEN + "成功打开插件快捷菜单。");
             Inventory GUI = Bukkit.createInventory(null, 4 * 9, "YuZeXingHe快捷UI：第1页");
@@ -142,6 +141,18 @@ public class OpenUI_CMD implements CommandExecutor, TabExecutor {
             sender.sendMessage(ChatColor.DARK_AQUA + "/reg 密码 确认密码 ： 注册指令，第一次进入必须要进行注册。");
             sender.sendMessage(ChatColor.AQUA + "/login 密码 ： 登录到服务器。");
             return true;
+        }
+
+        // 配置文件读取
+        else if (UIopen.equals("config")) {
+            if (player.isOp()) {
+                String hand = ChatColor.AQUA + "YuZeXingHePlugin";
+                sender.sendMessage(ChatColor.GREEN + config.getConfig().getString("start"));
+            }
+            else {
+                String hand = ChatColor.AQUA + "YuZeXingHePlugin";
+                sender.sendMessage(ChatColor.RED + config.getConfig().getString("start_def"));
+            }
         }
 
         else {

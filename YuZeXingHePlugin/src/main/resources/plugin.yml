@@ -5,7 +5,14 @@ api-version: '1.20'
 
 commands:
   ui:
-    description: "打开YuZeXingHe-Plugin的UI界面指令"
+    description: "YuZeXingHe-Plugin的第1条可用的指令方式"
     usage:
       - /ui <UIopen>
       - /ui <help>
+      - /ui <config>
+  yzxh:
+    description: "YuZeXingHe-Plugin的第2条可用的指令方式"
+    usage:
+      - /yzxh <UIOpen>
+      - /yzxh <help>
+      - /yzxh <config>

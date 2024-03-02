@@ -32,6 +32,8 @@ public final class YuZeXingHePlugin extends JavaPlugin {
         getCommand("ui").setExecutor(new OpenUI_CMD());
         // 指令Tab补全存放处
         getCommand("ui").setTabCompleter(new OpenUI_CMD());
+        // 配置文件
+        saveDefaultConfig();
     }
 
     @Override
