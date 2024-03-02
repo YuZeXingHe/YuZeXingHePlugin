@@ -3,14 +3,17 @@ package com.yuzexingheplugin.Plugin_UI;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
-import org.bukkit.command.*;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,8 +21,7 @@ public class OpenUI_CMD implements CommandExecutor, TabExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         Player player = (Player) sender;
-        String UIopen = args [0];
-        Plugin config = com.yuzexingheplugin.YuZeXingHePlugin.getProvidingPlugin(com.yuzexingheplugin.YuZeXingHePlugin.class);
+        String UIopen = args[0];
         if (UIopen.equals("open")) {
             sender.sendMessage(ChatColor.GREEN + "成功打开插件快捷菜单。");
             Inventory GUI = Bukkit.createInventory(null, 4 * 9, "YuZeXingHe快捷UI：第1页");
@@ -136,26 +138,12 @@ public class OpenUI_CMD implements CommandExecutor, TabExecutor {
         // 帮助指令和页面（仅一些重要指令！）
         else if (UIopen.equals("help")) {
             sender.sendMessage(ChatColor.YELLOW + "感谢您使用YuZePlugin，下面是一些服务器常用指令帮助：");
-            sender.sendMessage(ChatColor.DARK_AQUA + "/ui open ： 打开本插件的随身ui界面，含随身工作台，管理员等功能（目前正在逐步完善中！）。");
-            sender.sendMessage(ChatColor.AQUA + "/ui help ： 弹出本帮助。");
-            sender.sendMessage(ChatColor.DARK_AQUA + "/reg 密码 确认密码 ： 注册指令，第一次进入必须要进行注册。");
-            sender.sendMessage(ChatColor.AQUA + "/login 密码 ： 登录到服务器。");
+            sender.sendMessage(ChatColor.DARK_AQUA + "/ui open ：打开本插件的随身ui界面，含随身工作台，管理员等功能。");
+            sender.sendMessage(ChatColor.AQUA + "/ui help ：弹出本帮助。");
+            sender.sendMessage(ChatColor.DARK_AQUA + "/reg 密码 确认密码 ：注册指令，第一次进入必须要进行注册。");
+            sender.sendMessage(ChatColor.AQUA + "/login 密码 ：登录到服务器。");
             return true;
-        }
-
-        // 配置文件读取
-        else if (UIopen.equals("config")) {
-            if (player.isOp()) {
-                String hand = ChatColor.AQUA + "YuZeXingHePlugin";
-                sender.sendMessage(ChatColor.GREEN + config.getConfig().getString("start"));
-            }
-            else {
-                String hand = ChatColor.AQUA + "YuZeXingHePlugin";
-                sender.sendMessage(ChatColor.RED + config.getConfig().getString("start_def"));
-            }
-        }
-
-        else {
+        } else {
             sender.sendMessage(ChatColor.RED + "未知的指令，请检查指令是否拼写正确！");
         }
         return false;

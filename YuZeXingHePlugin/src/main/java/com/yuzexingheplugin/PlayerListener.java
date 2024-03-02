@@ -2,11 +2,9 @@ package com.yuzexingheplugin;
 
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
-import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.*;
-import org.bukkit.block.data.type.Furnace;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
@@ -23,12 +21,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.EnchantmentStorageMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.material.Lever;
-import org.bukkit.metadata.FixedMetadataValue;
-import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
-import org.checkerframework.checker.units.qual.C;
-import org.eclipse.sisu.launch.Main;
 
 import java.util.Map;
 
@@ -72,6 +64,7 @@ public class PlayerListener implements Listener {
 
         Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.AQUA + player.getName() + ChatColor.YELLOW + "在方块：" + ChatColor.DARK_AQUA + block.getType().toString() + ChatColor.GREEN + "中采集了坐标为：" + location.toString() + "的水");
     }
+
     // 玩家倾倒和收集岩浆事件
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event) {
@@ -96,7 +89,7 @@ public class PlayerListener implements Listener {
         Item droppedItem = event.getItemDrop();
         Location location = droppedItem.getLocation();
 
-        Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.AQUA + player.getName() + ChatColor.YELLOW + "丢弃了物品：" + ChatColor.DARK_AQUA + droppedItem.getItemStack().getType().toString() + ChatColor.GREEN + "物品丢在：" +  location.toString());
+        Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.AQUA + player.getName() + ChatColor.YELLOW + "丢弃了物品：" + ChatColor.DARK_AQUA + droppedItem.getItemStack().getType().toString() + ChatColor.GREEN + "物品丢在：" + location.toString());
     }
 
     // 玩家拾取物品事件
@@ -592,7 +585,7 @@ public class PlayerListener implements Listener {
             if (event.getCause() == EntityDamageEvent.DamageCause.LIGHTNING) {
 
                 YuZeXingHePlugin plugin = YuZeXingHePlugin.getInstance();
-                plugin.getServer().broadcastMessage(ChatColor.AQUA + player.getName() +  ChatColor.YELLOW + "被雷劈了！大家快笑他！");
+                plugin.getServer().broadcastMessage(ChatColor.AQUA + player.getName() + ChatColor.YELLOW + "被雷劈了！大家快笑他！");
                 Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.AQUA + player.getName() + ChatColor.YELLOW + "被雷劈了！大家快笑他！");
             }
         }
@@ -667,14 +660,11 @@ public class PlayerListener implements Listener {
 
         if (event.getState() == PlayerFishEvent.State.FISHING) {
             Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.AQUA + player.getName() + ChatColor.GREEN + "在坐标" + fishLocation.getX() + ", " + fishLocation.getY() + ", " + fishLocation.getZ() + ChatColor.YELLOW + "抛出了钓鱼竿");
-        }
-        else if (event.getState() == PlayerFishEvent.State.REEL_IN) {
+        } else if (event.getState() == PlayerFishEvent.State.REEL_IN) {
             Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.AQUA + player.getName() + ChatColor.GREEN + "在坐标" + fishLocation.getX() + ", " + fishLocation.getY() + ", " + fishLocation.getZ() + ChatColor.YELLOW + "收回了钓鱼竿");
-        }
-        else if (event.getState() == PlayerFishEvent.State.CAUGHT_FISH) {
+        } else if (event.getState() == PlayerFishEvent.State.CAUGHT_FISH) {
             Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.AQUA + player.getName() + ChatColor.GREEN + "在坐标" + fishLocation.getX() + ", " + fishLocation.getY() + ", " + fishLocation.getZ() + ChatColor.YELLOW + "钓到了一条鱼");
-        }
-        else if (event.getState() == PlayerFishEvent.State.FAILED_ATTEMPT) {
+        } else if (event.getState() == PlayerFishEvent.State.FAILED_ATTEMPT) {
             Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.AQUA + player.getName() + ChatColor.GREEN + "在坐标" + fishLocation.getX() + ", " + fishLocation.getY() + ", " + fishLocation.getZ() + ChatColor.YELLOW + "钓鱼失败了");
         }
     }
@@ -773,8 +763,7 @@ public class PlayerListener implements Listener {
                 Location explosionLocation = event.getLocation();
 
                 Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.AQUA + player.getDisplayName() + ChatColor.GREEN + "在 x:" + player.getLocation().getBlockX() + ", y:" + player.getLocation().getBlockY() + ", z:" + player.getLocation().getBlockZ() + ChatColor.RED + "引爆了苦力怕！" + ChatColor.GREEN + "爆炸位置: x:" + explosionLocation.getBlockX() + ", y:" + explosionLocation.getBlockY() + ", z:" + explosionLocation.getBlockZ());
-            }
-            else {
+            } else {
                 Location explosionLocation = event.getLocation();
 
                 Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.YELLOW + "苦力怕在" + ChatColor.GREEN + "x:" + explosionLocation.getBlockX() + ", y:" + explosionLocation.getBlockY() + ", z:" + explosionLocation.getBlockZ() + ChatColor.RED + "自爆！");
@@ -788,7 +777,7 @@ public class PlayerListener implements Listener {
         Player player = event.getPlayer();
         String itemName = event.getItem().getType().name();
 
-        Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.AQUA + player.getName() +  ChatColor.YELLOW + "食用了" + ChatColor.DARK_AQUA + itemName);
+        Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.AQUA + player.getName() + ChatColor.YELLOW + "食用了" + ChatColor.DARK_AQUA + itemName);
     }
 
     // 玩家从主世界传送到地狱

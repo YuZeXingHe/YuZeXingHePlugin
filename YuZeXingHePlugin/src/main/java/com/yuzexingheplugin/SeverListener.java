@@ -1,34 +1,17 @@
 package com.yuzexingheplugin;
 
 import io.papermc.paper.event.player.PlayerDeepSleepEvent;
-import net.md_5.bungee.api.ChatMessageType;
-import org.bukkit.*;
-import org.bukkit.block.Block;
-import org.bukkit.block.ShulkerBox;
-import org.bukkit.entity.Entity;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.GameMode;
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.Action;
-import org.bukkit.event.block.BlockBreakEvent;
-import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryType;
-import org.bukkit.event.player.PlayerCommandSendEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
-import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.material.Furnace;
-import org.bukkit.metadata.FixedMetadataValue;
-import org.bukkit.scoreboard.DisplaySlot;
-import org.bukkit.scoreboard.Objective;
-import org.bukkit.scoreboard.Score;
-import org.bukkit.scoreboard.Scoreboard;
-
-import static org.bukkit.Bukkit.getLogger;
 
 public class SeverListener implements Listener {
     @EventHandler
@@ -75,67 +58,53 @@ public class SeverListener implements Listener {
                     player.setGameMode(GameMode.CREATIVE);
                     player.sendMessage(ChatColor.GREEN + "所选功能执行成功！");
                     player.sendMessage(ChatColor.YELLOW + "成功将" + player.getName() + "的游戏模式设置为创造模式！");
-                }
-                else {
+                } else {
                     player.sendMessage(ChatColor.RED + "你无权使用这个命令！");
                 }
-            }
-            else if (left_click.getRawSlot() == 1) {
+            } else if (left_click.getRawSlot() == 1) {
                 if (player.isOp()) {
                     player.setGameMode(GameMode.SURVIVAL);
                     player.sendMessage(ChatColor.GREEN + "所选功能执行成功！");
                     player.sendMessage(ChatColor.YELLOW + "成功将" + player.getName() + "的游戏模式设置为生存模式！");
-                }
-                else {
+                } else {
                     player.sendMessage(ChatColor.RED + "你无权使用这个命令！");
                 }
-            }
-            else if (left_click.getRawSlot() == 2) {
+            } else if (left_click.getRawSlot() == 2) {
                 if (player.isOp()) {
                     player.setGameMode(GameMode.ADVENTURE);
                     player.sendMessage(ChatColor.GREEN + "所选功能执行成功！");
                     player.sendMessage(ChatColor.YELLOW + "成功将" + player.getName() + "的游戏模式设置为冒险模式！");
-                }
-                else {
+                } else {
                     player.sendMessage(ChatColor.RED + "你无权使用这个命令！");
                 }
-            }
-            else if (left_click.getRawSlot() == 3) {
+            } else if (left_click.getRawSlot() == 3) {
                 if (player.isOp()) {
                     player.setGameMode(GameMode.SPECTATOR);
                     player.sendMessage(ChatColor.GREEN + "所选功能执行成功！");
                     player.sendMessage(ChatColor.YELLOW + "成功将" + player.getName() + "的游戏模式设置为旁观者模式！");
-                }
-                else {
+                } else {
                     player.sendMessage(ChatColor.RED + "你无权使用这个命令！");
                 }
-            }
-            else if (left_click.getRawSlot() == 4) {
+            } else if (left_click.getRawSlot() == 4) {
                 if (player.isOp()) {
                     player.sendMessage(ChatColor.YELLOW + "所选功能执行成功，即将关闭服务器");
                     Bukkit.getServer().shutdown();
-                }
-                else {
+                } else {
                     player.sendMessage(ChatColor.RED + "你无权使用这个命令！");
                 }
-            }
-            else if (left_click.getRawSlot() == 5) {
+            } else if (left_click.getRawSlot() == 5) {
                 player.openLoom(null, true);
                 player.sendMessage(ChatColor.GREEN + "所选功能执行成功！");
-            }
-            else if (left_click.getRawSlot() == 6) {
+            } else if (left_click.getRawSlot() == 6) {
                 player.openAnvil(null, true);
                 player.sendMessage(ChatColor.GREEN + "所选功能执行成功！");
-            }
-            else if (left_click.getRawSlot() == 7) {
+            } else if (left_click.getRawSlot() == 7) {
                 player.openWorkbench(null, true);
                 player.sendMessage(ChatColor.GREEN + "所选功能执行成功！");
-            }
-            else if (left_click.getRawSlot() == 8) {
+            } else if (left_click.getRawSlot() == 8) {
                 player.sendMessage(ChatColor.GREEN + "自杀成功！");
                 player.setHealth(0);
-            }
-            else if (left_click.getRawSlot() == 35) {
+            } else if (left_click.getRawSlot() == 35) {
                 player.getInventory().clear();
                 player.saveData();
                 player.sendMessage(ChatColor.RED + "成功清空你的背包！");

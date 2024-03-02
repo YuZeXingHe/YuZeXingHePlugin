@@ -2,16 +2,14 @@ package com.yuzexingheplugin;
 
 import com.yuzexingheplugin.Custom_Formulations.Custom_Formulations;
 import com.yuzexingheplugin.Plugin_UI.OpenUI_CMD;
+import com.yuzexingheplugin.Plugin_UI.config;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerFishEvent;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.util.ChatPaginator;
 
 public final class YuZeXingHePlugin extends JavaPlugin {
     private static YuZeXingHePlugin instance;
+
     @Override
     public void onEnable() {
         // 插件成功启动并运行
@@ -30,6 +28,7 @@ public final class YuZeXingHePlugin extends JavaPlugin {
         Custom_Formulations.block_granite();
         // 指令存放处
         getCommand("ui").setExecutor(new OpenUI_CMD());
+        getCommand("config").setExecutor(new config());
         // 指令Tab补全存放处
         getCommand("ui").setTabCompleter(new OpenUI_CMD());
         // 配置文件

@@ -5,14 +5,9 @@ api-version: '1.20'
 
 commands:
   ui:
-    description: "YuZeXingHe-Plugin的第1条可用的指令方式"
+    description: "打开 YuZeXingHe-Plugin 的 UI"
     usage:
-      - /ui <UIopen>
-      - /ui <help>
-      - /ui <config>
-  yzxh:
-    description: "YuZeXingHe-Plugin的第2条可用的指令方式"
-    usage:
-      - /yzxh <UIOpen>
-      - /yzxh <help>
-      - /yzxh <config>
+      - "/ui <UIopen>"
+
+  config:
+    description: "处理配置文件相关操作"
