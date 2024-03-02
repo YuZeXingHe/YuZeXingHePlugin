@@ -37,7 +37,8 @@ public class SeverListener implements Listener {
         Location playerLocation = player.getLocation();
         if (deathCount <= 1) {
             event.setDeathMessage(ChatColor.YELLOW + "死亡消息：" + player_name + "给自己玩没了，服务器直接笑TA！当前死亡次数：" + deathCount);
-        } else {
+        }
+        else {
             event.setDeathMessage(ChatColor.YELLOW + "死亡消息：" + player_name + "又给自己玩没了，服务器已经笑岔气了！当前死亡次数：" + deathCount);
         }
     }
@@ -58,53 +59,67 @@ public class SeverListener implements Listener {
                     player.setGameMode(GameMode.CREATIVE);
                     player.sendMessage(ChatColor.GREEN + "所选功能执行成功！");
                     player.sendMessage(ChatColor.YELLOW + "成功将" + player.getName() + "的游戏模式设置为创造模式！");
-                } else {
+                }
+                else {
                     player.sendMessage(ChatColor.RED + "你无权使用这个命令！");
                 }
-            } else if (left_click.getRawSlot() == 1) {
+            }
+            else if (left_click.getRawSlot() == 1) {
                 if (player.isOp()) {
                     player.setGameMode(GameMode.SURVIVAL);
                     player.sendMessage(ChatColor.GREEN + "所选功能执行成功！");
                     player.sendMessage(ChatColor.YELLOW + "成功将" + player.getName() + "的游戏模式设置为生存模式！");
-                } else {
+                }
+                else {
                     player.sendMessage(ChatColor.RED + "你无权使用这个命令！");
                 }
-            } else if (left_click.getRawSlot() == 2) {
+            }
+            else if (left_click.getRawSlot() == 2) {
                 if (player.isOp()) {
                     player.setGameMode(GameMode.ADVENTURE);
                     player.sendMessage(ChatColor.GREEN + "所选功能执行成功！");
                     player.sendMessage(ChatColor.YELLOW + "成功将" + player.getName() + "的游戏模式设置为冒险模式！");
-                } else {
+                }
+                else {
                     player.sendMessage(ChatColor.RED + "你无权使用这个命令！");
                 }
-            } else if (left_click.getRawSlot() == 3) {
+            }
+            else if (left_click.getRawSlot() == 3) {
                 if (player.isOp()) {
                     player.setGameMode(GameMode.SPECTATOR);
                     player.sendMessage(ChatColor.GREEN + "所选功能执行成功！");
                     player.sendMessage(ChatColor.YELLOW + "成功将" + player.getName() + "的游戏模式设置为旁观者模式！");
-                } else {
+                }
+                else {
                     player.sendMessage(ChatColor.RED + "你无权使用这个命令！");
                 }
-            } else if (left_click.getRawSlot() == 4) {
+            }
+            else if (left_click.getRawSlot() == 4) {
                 if (player.isOp()) {
                     player.sendMessage(ChatColor.YELLOW + "所选功能执行成功，即将关闭服务器");
                     Bukkit.getServer().shutdown();
-                } else {
+                }
+                else {
                     player.sendMessage(ChatColor.RED + "你无权使用这个命令！");
                 }
-            } else if (left_click.getRawSlot() == 5) {
+            }
+            else if (left_click.getRawSlot() == 5) {
                 player.openLoom(null, true);
                 player.sendMessage(ChatColor.GREEN + "所选功能执行成功！");
-            } else if (left_click.getRawSlot() == 6) {
+            }
+            else if (left_click.getRawSlot() == 6) {
                 player.openAnvil(null, true);
                 player.sendMessage(ChatColor.GREEN + "所选功能执行成功！");
-            } else if (left_click.getRawSlot() == 7) {
+            }
+            else if (left_click.getRawSlot() == 7) {
                 player.openWorkbench(null, true);
                 player.sendMessage(ChatColor.GREEN + "所选功能执行成功！");
-            } else if (left_click.getRawSlot() == 8) {
+            }
+            else if (left_click.getRawSlot() == 8) {
                 player.sendMessage(ChatColor.GREEN + "自杀成功！");
                 player.setHealth(0);
-            } else if (left_click.getRawSlot() == 35) {
+            }
+            else if (left_click.getRawSlot() == 35) {
                 player.getInventory().clear();
                 player.saveData();
                 player.sendMessage(ChatColor.RED + "成功清空你的背包！");

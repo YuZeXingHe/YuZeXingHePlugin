@@ -1,13 +1,17 @@
 name: YuZeXingHePlugin
-version: '1.8.2'
+version: '1.8.3'
 main: com.yuzexingheplugin.YuZeXingHePlugin
 api-version: '1.20'
 
 commands:
   ui:
-    description: "打开 YuZeXingHe-Plugin 的 UI"
+    description: "打开YuZeXingHe-Plugin的UI"
     usage:
       - "/ui <UIopen>"
 
-  config:
-    description: "处理配置文件相关操作"
+  uiconfig:
+    description: "配置文件修改和加载相关指令"
+    usage:
+      - "/uiconfig <config_command>"
+      - "/uiconfig <config_command> <config_changes>"
+      - "/uiconfig <config_command> <config_changes> <config_change>"

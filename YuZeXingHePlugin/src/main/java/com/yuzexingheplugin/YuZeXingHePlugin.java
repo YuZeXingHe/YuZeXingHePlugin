@@ -5,6 +5,7 @@ import com.yuzexingheplugin.Plugin_UI.OpenUI_CMD;
 import com.yuzexingheplugin.Plugin_UI.config;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class YuZeXingHePlugin extends JavaPlugin {
@@ -15,7 +16,7 @@ public final class YuZeXingHePlugin extends JavaPlugin {
         // 插件成功启动并运行
         getLogger().info("插件成功运行，感谢您使用YuZeXingHePlugin！开发者：YuZeXingHe！");
         getLogger().info("一款自己写的涵盖事件、指令优化的插件");
-        getLogger().info("版本：1.8.2-插件更新时间：2024-02-29");
+        getLogger().info("当前插件版本：1.8.3");
 
         getServer().getScheduler().runTaskTimer(this, this::sendActionBar, 0, 20);
         // 监听器存放处
@@ -28,9 +29,10 @@ public final class YuZeXingHePlugin extends JavaPlugin {
         Custom_Formulations.block_granite();
         // 指令存放处
         getCommand("ui").setExecutor(new OpenUI_CMD());
-        getCommand("config").setExecutor(new config());
+        getCommand("uiconfig").setExecutor(new config());
         // 指令Tab补全存放处
         getCommand("ui").setTabCompleter(new OpenUI_CMD());
+        getCommand("uiconfig").setTabCompleter(new config());
         // 配置文件
         saveDefaultConfig();
     }
@@ -49,7 +51,10 @@ public final class YuZeXingHePlugin extends JavaPlugin {
             int mspt = (int) Bukkit.getAverageTickTime();
             int ping = getPlayerPing(player);
             String pingColor = (ping >= 60) ? "§4" : "§a";
-            player.sendActionBar("§4血量: " + health + " §6TPS: " + tps + " §6MSPT: " + mspt + pingColor + " Ping：" + ping);
+            ItemStack itemInHand = player.getInventory().getItemInMainHand();
+            int itemDurability = itemInHand.getType().getMaxDurability() - itemInHand.getDurability();
+            String itemDurability_color = (itemDurability >= 30) ? "§4" : "§a";
+            player.sendActionBar("§4血量: " + health + " §6TPS: " + tps + " §6MSPT: " + mspt + pingColor + " Ping：" + ping + " §6当前物品耐久剩余: " + itemDurability);
         }
     }
 
