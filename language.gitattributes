@@ -1,8 +1,6 @@
 *.js linguist-language=JavaScript
 *.java linguist-language=Java
 *.html linguist-language=HTML
-*.c liguist-language=C
-*.md liguist-language=README
 
 * text=auto
 
