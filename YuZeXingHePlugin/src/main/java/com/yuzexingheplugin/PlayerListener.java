@@ -130,7 +130,12 @@ public class PlayerListener implements Listener {
             if (clickedItem != null && event.getRawSlot() < clickedInventory.getSize()) {
                 Location location = clickedInventory.getLocation();
 
-                Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.AQUA + player.getName() + ChatColor.RED + "从箱子中取出了物品 " + ChatColor.DARK_AQUA + clickedItem.getType().toString() + "。" + ChatColor.GREEN + "坐标：" + location.toString());
+                if (location != null) {
+                    Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.AQUA + player.getName() + ChatColor.RED + "从箱子中取出了物品 " + ChatColor.DARK_AQUA + clickedItem.getType().toString() + "。" + ChatColor.GREEN + "坐标：" + location.toString());
+                }
+                else {
+                    Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.AQUA + player.getName() + ChatColor.RED + "从随身UI界面取出了物品 " + ChatColor.DARK_AQUA + clickedItem.getType().toString());
+                }
             }
         }
     }

@@ -24,8 +24,9 @@ public class OpenUI_CMD implements CommandExecutor, TabExecutor {
         String UIopen = args[0];
         if (UIopen.equals("open")) {
             sender.sendMessage(ChatColor.GREEN + "成功打开插件快捷菜单。");
-            Inventory GUI = Bukkit.createInventory(null, 4 * 9, "YuZeXingHe快捷UI：第1页");
+            Inventory GUI = Bukkit.createInventory(null, 6 * 9, "YuZeXingHe快捷UI：第1页");
 
+            // 获取物品信息
             ItemStack grass_block = new ItemStack(Material.GRASS_BLOCK);
             ItemStack iron_sword = new ItemStack(Material.IRON_SWORD);
             ItemStack map = new ItemStack(Material.MAP);
@@ -129,7 +130,7 @@ public class OpenUI_CMD implements CommandExecutor, TabExecutor {
             GUI.setItem(6, anvil);
             GUI.setItem(7, chafting_table);
             GUI.setItem(8, wooden_axe);
-            GUI.setItem(35, chest);
+            GUI.setItem(53, chest);
 
             player.openInventory(GUI);
             return true;
@@ -138,12 +139,17 @@ public class OpenUI_CMD implements CommandExecutor, TabExecutor {
         // 帮助指令和页面（仅一些重要指令！）
         else if (UIopen.equals("help")) {
             sender.sendMessage(ChatColor.YELLOW + "感谢您使用YuZePlugin，下面是一些服务器常用指令帮助：");
-            sender.sendMessage(ChatColor.DARK_AQUA + "/ui open ：打开本插件的随身ui界面，含随身工作台，管理员等功能。");
-            sender.sendMessage(ChatColor.AQUA + "/ui help ：弹出本帮助。");
-            sender.sendMessage(ChatColor.DARK_AQUA + "/reg 密码 确认密码 ：注册指令，第一次进入必须要进行注册。");
-            sender.sendMessage(ChatColor.AQUA + "/login 密码 ：登录到服务器。");
+            sender.sendMessage(ChatColor.DARK_AQUA + "/ui open：打开本插件的随身ui界面，含随身工作台，管理员等功能。");
+            sender.sendMessage(ChatColor.AQUA + "/ui help：弹出本帮助。");
+            sender.sendMessage(ChatColor.DARK_AQUA + "/reg 密码 确认密码：注册指令，第一次进入必须要进行注册。");
+            sender.sendMessage(ChatColor.AQUA + "/login 密码：登录到服务器。");
+            if (player.isOp()) {
+                sender.sendMessage(ChatColor.DARK_AQUA + "/uiconfig start：加载配置文件（须在服务器中以管理员身份使用该指令）。");
+                sender.sendMessage(ChatColor.AQUA + "/uiconfig change：修改配置文件（须在服务器中以管理员身份使用该指令）。");
+            }
             return true;
-        } else {
+        }
+        else {
             sender.sendMessage(ChatColor.RED + "未知的指令，请检查指令是否拼写正确！");
         }
         return false;

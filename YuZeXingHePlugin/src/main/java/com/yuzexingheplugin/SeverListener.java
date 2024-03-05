@@ -119,7 +119,7 @@ public class SeverListener implements Listener {
                 player.sendMessage(ChatColor.GREEN + "自杀成功！");
                 player.setHealth(0);
             }
-            else if (left_click.getRawSlot() == 35) {
+            else if (left_click.getRawSlot() == 53) {
                 player.getInventory().clear();
                 player.saveData();
                 player.sendMessage(ChatColor.RED + "成功清空你的背包！");
