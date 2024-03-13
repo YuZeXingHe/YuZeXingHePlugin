@@ -558,7 +558,7 @@ public class PlayerListener implements Listener {
             double damage = event.getFinalDamage();
             Location location = player.getLocation();
 
-            Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.AQUA + player.getName() + ChatColor.GREEN + "在坐标" + location.getX() + ", " + location.getY() + ", " + location.getZ() + ChatColor.RED + "受到了来自" + ChatColor.DARK_AQUA + attacker.getType().toString() + ChatColor.YELLOW + "的伤害 " + ChatColor.RED + damage + ChatColor.YELLOW + "点！");
+            Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.AQUA + player.getName() + ChatColor.GREEN + "在坐标" + location.getX() + ", " + location.getY() + ", " + location.getZ() + ChatColor.RED + "受到了来自" + ChatColor.DARK_AQUA + attacker.getType().toString() + ChatColor.YELLOW + "的伤害" + ChatColor.RED + damage + ChatColor.YELLOW + "点！");
         }
     }
 
@@ -577,7 +577,7 @@ public class PlayerListener implements Listener {
             if (shield.getType().toString().contains("SHIELD")) {
                 double blockedDamage = event.getDamage() - damage;
 
-                Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.AQUA + player.getName() + ChatColor.GREEN + "在坐标" + location.getX() + ", " + location.getY() + ", " + location.getZ() + ChatColor.GOLD + "使用盾牌成功格挡了来自" + ChatColor.DARK_AQUA + attacker.getType().toString() + ChatColor.YELLOW + "的攻击，格挡了 " + ChatColor.RED + blockedDamage + ChatColor.YELLOW + "点伤害！");
+                Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.AQUA + player.getName() + ChatColor.GREEN + "在坐标" + location.getX() + ", " + location.getY() + ", " + location.getZ() + ChatColor.GOLD + "使用盾牌成功格挡了来自" + ChatColor.DARK_AQUA + attacker.getType().toString() + ChatColor.YELLOW + "的攻击，格挡了" + ChatColor.RED + blockedDamage + ChatColor.YELLOW + "点伤害！");
             }
         }
     }

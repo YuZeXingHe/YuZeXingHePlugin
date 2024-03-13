@@ -1,6 +1,7 @@
 # 配置文件读取成功，发送给服务端
 start: "配置文件读取成功！"
 start_def: "您没有足够的权限或者配置文件出错！"
+
 all_formulation_false: "自定义配方总开关已关闭！"
 all_formulation_true: "自定义配方总开关已开启！"
 registerRecipes_enchanted_golden_apple_false: "附魔金苹果配方已关闭！"
@@ -11,9 +12,34 @@ block_granite_false: "花岗岩配方已关闭！"
 block_granite_true: "花岗岩配方已开启！"
 block_diorite_false: "闪长岩配方已关闭！"
 block_diorite_true: "闪长岩配方已开启！"
+
+all_ui_true: "快捷UI界面已开启！"
+all_ui_false: "快捷UI界面已关闭！"
+
+server_listener_true: "服务器监听已开启！"
+server_listener_false: "服务器监听已关闭！"
+player_join_true: "玩家加入游戏监听已开启！"
+player_join_false: "玩家加入游戏监听已关闭！"
+player_quit_true: "玩家离开游戏监听已开启！"
+player_quit_false: "玩家离开游戏监听已关闭！"
+player_death_true: "玩家死亡监听已开启！"
+player_death_false: "玩家死亡监听已关闭！"
+player_deep_sleep_true: "玩家深度睡眠监听已开启！"
+player_deep_sleep_false: "玩家深度睡眠监听已关闭！"
+
 # 设置自定义配方的开启关闭（打开all_formulation后下方的自定义配方内容才会生效）
 all_formulation: true
 registerRecipes_enchanted_golden_apple: true
 block_andesite: true
 block_granite: true
 block_diorite: true
+
+# UI界面开关（适配指令：/ui open）
+all_ui: true
+
+# 服务器监听事件触发开关（监听内容：玩家加入，玩家死亡等事件内容）
+server_listener: true
+player_join: true
+player_quit: true
+player_death: true
+player_deep_sleep: true

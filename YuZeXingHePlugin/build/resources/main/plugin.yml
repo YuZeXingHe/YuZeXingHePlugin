@@ -1,5 +1,5 @@
 name: YuZeXingHePlugin
-version: '1.8.4'
+version: '1.8.5'
 main: com.yuzexingheplugin.YuZeXingHePlugin
 api-version: '1.20'
 
