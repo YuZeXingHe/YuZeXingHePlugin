@@ -41,6 +41,11 @@ public class config implements CommandExecutor, TabCompleter {
         Boolean Player_Death = plugin.getConfig().getBoolean("player_death");
         Boolean Player_Deep_Sleep = plugin.getConfig().getBoolean("player_deep_sleep");
 
+        // 玩家活动监听配置
+        Boolean Player_Listenter = plugin.getConfig().getBoolean("player_listenter");
+
+        // 玩家监听配置
+
         if (args.length < 1) {
             player.sendMessage(ChatColor.RED + "请输入正确的参数！");
             return false;
@@ -139,6 +144,14 @@ public class config implements CommandExecutor, TabCompleter {
             if (!Player_Deep_Sleep) {
                 sender.sendMessage(ChatColor.AQUA + plugin.getConfig().getString("player_deep_sleep_false"));
             }
+            // 服务器监听玩家活动内容总开关
+            sender.sendMessage(ChatColor.YELLOW + hand + ChatColor.GREEN + "玩家行为活动监听列表：");
+            if (Player_Listenter) {
+                sender.sendMessage(ChatColor.AQUA + plugin.getConfig().getString("player_listenter_true"));
+            }
+            if (!Player_Listenter) {
+                sender.sendMessage(ChatColor.AQUA + plugin.getConfig().getString("player_listenter_false"));
+            }
         }
         else if (config_command.equals("change")) {
             if (args.length < 3) {
@@ -185,6 +198,11 @@ public class config implements CommandExecutor, TabCompleter {
                 }
             }
 
+            // 服务器玩家活动监听参数修改
+            else if (config_changes.equals("player_listenter")) {
+                plugin.getConfig().set(config_changes, Boolean.valueOf(args[2]));
+            }
+
             // 当找不到config配置时发送
             else {
                 player.sendMessage(ChatColor.RED + "未知的配置项！");
@@ -223,6 +241,7 @@ public class config implements CommandExecutor, TabCompleter {
             completions.add("player_quit");
             completions.add("player_death");
             completions.add("player_deep_sleep");
+            completions.add("player_listenter");
         }
 
         else if (args.length == 3 && (args[1].equals("all_formulation") || args[1].equals("registerRecipes_enchanted_golden_apple") || args[1].equals("block_andesite") || args[1].equals("block_granite") || args[1].equals("block_diorite") || args[1].equals("all_ui"))) {

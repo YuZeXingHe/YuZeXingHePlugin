@@ -6,6 +6,7 @@ import com.yuzexingheplugin.Plugin_UI.config;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class YuZeXingHePlugin extends JavaPlugin {
@@ -16,7 +17,8 @@ public final class YuZeXingHePlugin extends JavaPlugin {
         // 插件成功启动并运行
         getLogger().info("插件成功运行，感谢您使用YuZeXingHePlugin！开发者：YuZeXingHe！");
         getLogger().info("一款自己写的涵盖事件、指令优化的插件");
-        getLogger().info("当前插件版本：1.8.5");
+        getLogger().info("当前插件版本：1.8.6");
+        getLogger().info("如果您在使用过程中发现任何Bug，请在GitHub中联系插件开发者！");
 
         getServer().getScheduler().runTaskTimer(this, this::sendActionBar, 0, 20);
         // 监听器存放处
@@ -33,7 +35,7 @@ public final class YuZeXingHePlugin extends JavaPlugin {
         // 指令Tab补全存放处
         getCommand("ui").setTabCompleter(new OpenUI_CMD());
         getCommand("uiconfig").setTabCompleter(new config());
-        // 配置文件
+        // 配置文件（保存）
         saveDefaultConfig();
     }
 
@@ -41,7 +43,7 @@ public final class YuZeXingHePlugin extends JavaPlugin {
     public void onDisable() {
         // 插件成功关闭
         getLogger().info("插件关闭成功，感谢您使用本插件");
-        getLogger().info("如果您在使用过程中发现任何Bug，请在群聊中联系插件开发者！");
+        getLogger().info("如果您在使用过程中发现任何Bug，请在GitHub中联系插件开发者！");
     }
 
     private void sendActionBar() {
