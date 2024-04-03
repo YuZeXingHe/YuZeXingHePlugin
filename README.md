@@ -19,4 +19,5 @@
 当您使用git下载完成后，您可以在Plugin文件夹中找到插件的JAR文件，在YuZeXingHePlugin文件夹中您可以找到本插件的所有源码。
 ### 关于作者
     插件问题反馈方式：xingguangyize@gmail.com
+    服务器相关问题反馈：LuoLuoNotFind@outlook.com
 插件作者：YuZeXingHe，一个极其摆烂的摸鱼怪，该插件由作者本人独自完成，创作灵感来源：摆烂到发霉后的突发奇想，然后从床上光速爬起来就有了这项灵感。
