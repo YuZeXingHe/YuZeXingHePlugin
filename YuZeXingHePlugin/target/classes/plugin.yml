@@ -1,0 +1,11 @@
+name: YuZeXingHePlugin
+version: '1.9.0'
+main: com.yuzexingheplugin.YuZeXingHePlugin
+api-version: '1.20'
+
+
+commands:
+  ui:
+    description: "插件的快捷UI界面"
+  uiconfig:
+    description: "配置文件修改和加载相关指令"
