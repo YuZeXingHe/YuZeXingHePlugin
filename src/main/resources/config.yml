@@ -1,0 +1,37 @@
+# 配置文件读取成功，发送给管理员
+start: "配置文件读取成功！"
+# 配置文件读取失败，发送给管理员
+start_def: "您没有足够的权限或者配置文件出错！"
+
+# UI面板开启或者关闭时的提示
+all_ui_true: "快捷UI界面已开启！"
+all_ui_false: "快捷UI界面已关闭！"
+
+# 服务器监听开启或者关闭时的提示
+server_listener_true: "服务器监听已开启！"
+server_listener_false: "服务器监听已关闭！"
+player_join_true: "玩家加入游戏监听已开启！"
+player_join_false: "玩家加入游戏监听已关闭！"
+player_quit_true: "玩家离开游戏监听已开启！"
+player_quit_false: "玩家离开游戏监听已关闭！"
+player_death_true: "玩家死亡监听已开启！"
+player_death_false: "玩家死亡监听已关闭！"
+player_deep_sleep_true: "玩家深度睡眠监听已开启！"
+player_deep_sleep_false: "玩家深度睡眠监听已关闭！"
+
+# 玩家监听开启或者关闭时的提示
+player_listenter_true: "玩家监听已关闭！"
+player_listenter_false: "玩家监听已开启！"
+
+# UI界面开关（适配指令：/ui open）
+all_ui: true
+
+# 服务器监听事件触发开关（监听内容：玩家加入，玩家死亡等事件内容，需要打开server_listener才会生效）
+server_listener: true
+player_join: true
+player_quit: true
+player_death: true
+player_deep_sleep: true
+
+# 玩家事件监听事件触发开关（监听内容：玩家挖掘，破坏方块等事件内容）
+player_listenter: true
