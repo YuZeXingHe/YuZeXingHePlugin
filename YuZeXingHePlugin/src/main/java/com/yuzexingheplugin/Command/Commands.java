@@ -29,7 +29,7 @@ public class Commands implements CommandExecutor, TabExecutor {
 
         if (All_UI) {
             String Command1 = args[0];
-            if (Command1.equals("open")) {
+            if (Command1.equals("ui")) {
                 sender.sendMessage(ChatColor.GREEN + "成功打开插件快捷菜单。");
                 Inventory GUI = Bukkit.createInventory(null, 6 * 9, "YuZeXingHe快捷UI：第1页");
 
@@ -167,7 +167,7 @@ public class Commands implements CommandExecutor, TabExecutor {
     public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if (args.length == 1) {
             List<String> list = new ArrayList<>();
-            list.add("open");
+            list.add("ui");
             list.add("help");
             return list;
         }

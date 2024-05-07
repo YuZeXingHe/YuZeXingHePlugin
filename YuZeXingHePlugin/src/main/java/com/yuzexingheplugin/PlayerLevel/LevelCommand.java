@@ -37,7 +37,6 @@ public class LevelCommand implements CommandExecutor, TabCompleter {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         Player player = (Player) sender;
         String LevelCommand1 = args[0];
-        String LevelCommand2 = args[1];
         if (!(sender instanceof Player)) {
             sender.sendMessage(ChatColor.RED + "该指令只能由玩家执行！");
             return false;
@@ -59,6 +58,7 @@ public class LevelCommand implements CommandExecutor, TabCompleter {
         }
         // 查询单个在线玩家的等级信息
         if (LevelCommand1.equals("player")) {
+            String LevelCommand2 = args[1];
             String playerName = LevelCommand2;
             Player targetPlayer = Bukkit.getServer().getPlayer(playerName);
             if (targetPlayer != null) {
@@ -68,9 +68,6 @@ public class LevelCommand implements CommandExecutor, TabCompleter {
             else {
                 sender.sendMessage(ChatColor.RED + "玩家 " + playerName + " 不在线！");
             }
-        }
-        else {
-            player.sendMessage("未知的指令，请检查指令是否拼写完整！");
         }
         return true;
     }
