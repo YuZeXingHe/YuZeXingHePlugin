@@ -17,6 +17,10 @@
 ### 使用git下载本插件
     git clone https://github.com/YuZeXingHe/YuZeXingHePlugin.git
 当您使用git下载完成后，您可以在Plugin文件夹中找到插件的JAR文件，在YuZeXingHePlugin文件夹中您可以找到本插件的所有源码。
+### 近期重要更新：1.9.1版本
+    分为3个Beta版本，一个正式版本进行更新，主要测试内容如下：
+    1.尽全力优化某部分垃圾代码，清除大部分非常没必要的代码，对文件结构和引用进行优化改善，完善源代码文件分类。
+    2.更新和完善插件的等级系统，经济系统因学业问题暂时搁置，具体更新时间我也不知道。
 ### 关于作者
     插件问题反馈方式：xingguangyize@gmail.com
     服务器相关问题反馈：LuoLuoNotFind@outlook.com
