@@ -6,7 +6,7 @@
 
     <groupId>com</groupId>
     <artifactId>YuZeXingHePlugin</artifactId>
-    <version>1.9.0</version>
+    <version>1.9.1Beta-1</version>
     <packaging>jar</packaging>
 
     <name>YuZeXingHePlugin</name>

@@ -23,14 +23,6 @@ player_deep_sleep_false: "玩家深度睡眠监听已关闭！"
 player_listenter_true: "玩家监听已关闭！"
 player_listenter_false: "玩家监听已开启！"
 
-# 设置自定义配方的开启关闭（打开all_formulation后下方的自定义配方内容才会生效）
-all_formulation: true
-# 设置附魔金苹果自定义配方开关（在Minecraft1.9版本中移除的配方）
-registerRecipes_enchanted_golden_apple: true
-block_andesite: true
-block_granite: true
-block_diorite: true
-
 # UI界面开关（适配指令：/ui open）
 all_ui: true
 

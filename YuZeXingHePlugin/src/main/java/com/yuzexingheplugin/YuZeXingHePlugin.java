@@ -1,16 +1,30 @@
 package com.yuzexingheplugin;
 
-import com.yuzexingheplugin.Plugin_UI.OpenUI_CMD;
-import com.yuzexingheplugin.Plugin_UI.config;
+import com.yuzexingheplugin.Listener.PlayerListener;
+import com.yuzexingheplugin.Listener.SeverListener;
+import com.yuzexingheplugin.Command.Commands;
+import com.yuzexingheplugin.Command.config;
+import com.yuzexingheplugin.PlayerLevel.LevelCommand;
 import org.bukkit.Bukkit;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.jetbrains.annotations.NotNull;
 
-public final class YuZeXingHePlugin extends JavaPlugin {
+import java.io.File;
+import java.io.IOException;
+
+public final class YuZeXingHePlugin extends JavaPlugin implements Listener {
     private static YuZeXingHePlugin instance;
-    String version = "1.9.0";
+    String version = "1.9.1Beta-1";
+
+    private File dataFile;
+    private YamlConfiguration data;
 
     @Override
     public void onEnable() {
@@ -24,14 +38,24 @@ public final class YuZeXingHePlugin extends JavaPlugin {
         // 监听器存放处
         getServer().getPluginManager().registerEvents(new SeverListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerListener(), this);
+        getServer().getPluginManager().registerEvents(this, this);
         // 指令存放处
-        getCommand("ui").setExecutor(new OpenUI_CMD());
-        getCommand("uiconfig").setExecutor(new config());
+        getCommand("open").setExecutor(new Commands());
+        getCommand("configs").setExecutor(new config());
+        getCommand("level").setExecutor(new LevelCommand());
         // 指令Tab补全存放处
-        getCommand("ui").setTabCompleter(new OpenUI_CMD());
-        getCommand("uiconfig").setTabCompleter(new config());
+        getCommand("open").setTabCompleter(new Commands());
+        getCommand("configs").setTabCompleter(new config());
+        getCommand("level").setTabCompleter(new LevelCommand());
         // 配置文件（保存）
         saveDefaultConfig();
+
+        // 加载或创建数据文件（等级系统）
+        dataFile = new File(getDataFolder(), "level.yml");
+        if (!dataFile.exists()) {
+            saveResource("level.yml", false);
+        }
+        data = YamlConfiguration.loadConfiguration(dataFile);
     }
 
     @Override
@@ -43,7 +67,6 @@ public final class YuZeXingHePlugin extends JavaPlugin {
 
     private void sendActionBar() {
         for (Player player : Bukkit.getOnlinePlayers()) {
-            int health = (int) player.getHealth();
             int tps = (int) Bukkit.getServer().getTPS()[0];
             int mspt = (int) Bukkit.getAverageTickTime();
             int ping = getPlayerPing(player);
@@ -51,7 +74,11 @@ public final class YuZeXingHePlugin extends JavaPlugin {
             ItemStack itemInHand = player.getInventory().getItemInMainHand();
             int itemDurability = itemInHand.getType().getMaxDurability() - itemInHand.getDurability();
             String itemDurability_color = (itemDurability >= 128) ? "§a" : "§4";
-            player.sendActionBar("§4Health: " + health + " §6TPS: " + tps + " §6MSPT: " + mspt + pingColor + " Ping: " + ping + " §6Durability: " + itemDurability_color + itemDurability);
+            // 等级功能
+            int level = data.getInt(player.getName() + ".Level");
+            double experience = data.getDouble(player.getName() + ".experience");
+            String actionBarMessage = "§6手持工具耐久: " + itemDurability_color + itemDurability + " §6活跃等级: §e" + level + " §6经验: §e" + String.format("%.2f", experience) + " §aTPS: " + tps + " MSPT: " + mspt + pingColor + " 延迟: " + ping;
+            player.sendActionBar(actionBarMessage);
         }
     }
 
@@ -61,5 +88,28 @@ public final class YuZeXingHePlugin extends JavaPlugin {
 
     public static YuZeXingHePlugin getInstance() {
         return instance;
+    }
+
+    // 玩家加入游戏时的处理（等级系统）
+    @EventHandler
+    public void onPlayerJoin(PlayerJoinEvent event) {
+        String playerName = event.getPlayer().getName();
+
+        // 检查玩家数据是否已存在
+        if (!data.contains(playerName)) {
+            data.set(playerName + ".Level", 0);
+            data.set(playerName + ".experience", 0.000000);
+            saveData();
+        }
+    }
+
+    // 保存文件（等级系统）
+    public void saveData() {
+        try {
+            data.save(dataFile);
+        }
+        catch (IOException e) {
+            getLogger().warning("无法保存数据文件: " + dataFile.getName());
+        }
     }
 }

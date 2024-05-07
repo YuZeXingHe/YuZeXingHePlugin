@@ -1,5 +1,6 @@
-com\yuzexingheplugin\Plugin_UI\OpenUI_CMD.class
-com\yuzexingheplugin\Plugin_UI\config.class
-com\yuzexingheplugin\PlayerListener.class
+com\yuzexingheplugin\PlayerLevel\LevelCommand.class
+com\yuzexingheplugin\Command\Commands.class
+com\yuzexingheplugin\Command\config.class
+com\yuzexingheplugin\Listener\PlayerListener.class
 com\yuzexingheplugin\YuZeXingHePlugin.class
-com\yuzexingheplugin\SeverListener.class
+com\yuzexingheplugin\Listener\SeverListener.class

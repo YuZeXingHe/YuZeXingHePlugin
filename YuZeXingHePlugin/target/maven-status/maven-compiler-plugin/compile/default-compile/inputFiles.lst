@@ -1,5 +1,6 @@
-D:\YuZeXingHePlugin\src\main\java\com\yuzexingheplugin\SeverListener.java
-D:\YuZeXingHePlugin\src\main\java\com\yuzexingheplugin\Plugin_UI\config.java
-D:\YuZeXingHePlugin\src\main\java\com\yuzexingheplugin\PlayerListener.java
-D:\YuZeXingHePlugin\src\main\java\com\yuzexingheplugin\Plugin_UI\OpenUI_CMD.java
+D:\YuZeXingHePlugin\src\main\java\com\yuzexingheplugin\Listener\SeverListener.java
+D:\YuZeXingHePlugin\src\main\java\com\yuzexingheplugin\PlayerLevel\LevelCommand.java
 D:\YuZeXingHePlugin\src\main\java\com\yuzexingheplugin\YuZeXingHePlugin.java
+D:\YuZeXingHePlugin\src\main\java\com\yuzexingheplugin\Command\Commands.java
+D:\YuZeXingHePlugin\src\main\java\com\yuzexingheplugin\Listener\PlayerListener.java
+D:\YuZeXingHePlugin\src\main\java\com\yuzexingheplugin\Command\config.java
