@@ -1,5 +1,6 @@
 package com.yuzexingheplugin.Listener;
 
+import com.yuzexingheplugin.YuZeXingHePlugin;
 import io.papermc.paper.event.player.PlayerDeepSleepEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -153,8 +154,8 @@ public class SeverListener implements Listener {
     // 玩家加入服务器事件
     @EventHandler
     public void Player_Join(PlayerJoinEvent event) {
-            if (Server_Listener()) {
-                if (Player_Join_Game()) {
+        if (Server_Listener()) {
+            if (Player_Join_Game()) {
                 Player player = event.getPlayer();
                 String player_name = player.getName();
                 event.setJoinMessage(ChatColor.YELLOW + "加入服务器：欢迎" + ChatColor.AQUA + player_name + ChatColor.YELLOW + "加入服务器！");

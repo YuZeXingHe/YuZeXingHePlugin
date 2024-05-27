@@ -6,87 +6,154 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
+import org.jetbrains.annotations.Nullable;
 
-import java.io.File;
-import java.io.IOException;
+import java.sql.*;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
+import static org.apache.logging.log4j.LogManager.getLogger;
+
 public class LevelCommand implements CommandExecutor, TabCompleter {
-    private File file;
-    private FileConfiguration data;
-    public LevelCommand() {
-        file = new File("plugins/YuZeXingHePlugin/level.yml");
-        if (!file.exists()) {
-            file.getParentFile().mkdirs();
-            try {
-                file.createNewFile();
-            }
-            catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        data = YamlConfiguration.loadConfiguration(file);
-    }
+    Plugin plugin = com.yuzexingheplugin.YuZeXingHePlugin.getProvidingPlugin(com.yuzexingheplugin.YuZeXingHePlugin.class);
+    // 数据库连接相关
+    final String username = plugin.getConfig().getString("username");
+    final String password = plugin.getConfig().getString("password");
+    final String url = plugin.getConfig().getString("url");
+    static Connection connection;
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        Player player = (Player) sender;
-        String LevelCommand1 = args[0];
-        if (!(sender instanceof Player)) {
-            sender.sendMessage(ChatColor.RED + "该指令只能由玩家执行！");
-            return false;
-        }
-        if (args.length < 1) {
-            sender.sendMessage(ChatColor.RED + "请输入正确的参数！");
-            return false;
-        }
+        lineMySQL();
+        // 使用指令查询服务器所有玩家等级（包括不在线的）并排行
+        if (sender instanceof Player) {
+            Player player = (Player) sender;
+            if (args.length > 0) {
+                String LevelCommand1 = args[0];
+                // 主要方法
+                if (LevelCommand1.equals("list")) {
+                    try {
+                        String Query = "SELECT PlayerName, PlayerLevel FROM PlayerData";
+                        PreparedStatement statement = connection.prepareStatement(Query);
+                        ResultSet resultSet = statement.executeQuery();
 
-        // 查询全部玩家等级（不论在不在线，只要数据文件里面有）
-        if (LevelCommand1.equals("list")) {
-            List<String> playerNames = new ArrayList<>(data.getKeys(false));
-            playerNames.sort(Comparator.comparingInt(name -> data.getInt(name + ".Level")));
-            player.sendMessage("===== 玩家等级排行榜 =====");
-            for (String playerName : playerNames) {
-                int level = data.getInt(playerName + ".Level");
-                player.sendMessage(playerName + " - 等级: " + level);
+                        List<String> leaderboard = new ArrayList<>();
+                        while (resultSet.next()) {
+                            String playerName = resultSet.getString("PlayerName");
+                            int level = resultSet.getInt("PlayerLevel");
+                            leaderboard.add(playerName + "玩家等级： " + level);
+                        }
+
+                        // 对获取到的内容排序
+                        leaderboard.sort((s1, s2) -> {
+                            int level1 = Integer.parseInt(s1.split("玩家等级： ")[1]);
+                            int level2 = Integer.parseInt(s2.split("玩家等级： ")[1]);
+                            return Integer.compare(level2, level1);
+                        });
+
+                        // 发送排序后的排行榜信息给玩家（仅前10）
+                        int count = 0;
+                        player.sendMessage(ChatColor.AQUA + "-------玩家等级排行榜（仅展示前10）-------");
+                        for (String entry : leaderboard) {
+                            if (count < 10) {
+                                player.sendMessage(ChatColor.GREEN + entry);
+                            }
+                            else {
+                                break;
+                            }
+                        }
+                        resultSet.close();
+                        statement.close();
+                    }
+                    catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
             }
-        }
-        // 查询单个在线玩家的等级信息
-        if (LevelCommand1.equals("player")) {
-            String LevelCommand2 = args[1];
-            String playerName = LevelCommand2;
-            Player targetPlayer = Bukkit.getServer().getPlayer(playerName);
-            if (targetPlayer != null) {
-                int level = data.getInt(playerName + ".Level", 0);
-                sender.sendMessage(ChatColor.GREEN + playerName + " 的等级为：" + level);
-            }
+            // 当玩家未输入参数时，向该玩家反馈错误
             else {
-                sender.sendMessage(ChatColor.RED + "玩家 " + playerName + " 不在线！");
+                player.sendMessage(ChatColor.RED + "请输入正确的参数！");
+                return false;
             }
         }
-        return true;
+        // 服务器终端查询
+        else {
+            if (args.length > 0) {
+                String LevelCommand1 = args[0];
+                // 主要方法
+                if (LevelCommand1.equals("list")) {
+                    try {
+                        String Query = "SELECT PlayerName, PlayerLevel FROM PlayerData";
+                        PreparedStatement statement = connection.prepareStatement(Query);
+                        ResultSet resultSet = statement.executeQuery();
+
+                        List<String> leaderboard = new ArrayList<>();
+                        while (resultSet.next()) {
+                            String playerName = resultSet.getString("PlayerName");
+                            int level = resultSet.getInt("PlayerLevel");
+                            leaderboard.add(playerName + "玩家等级： " + level);
+                        }
+
+                        // 对获取到的内容排序
+                        leaderboard.sort((s1, s2) -> {
+                            int level1 = Integer.parseInt(s1.split("玩家等级： ")[1]);
+                            int level2 = Integer.parseInt(s2.split("玩家等级： ")[1]);
+                            return Integer.compare(level2, level1);
+                        });
+
+                        // 发送排序后的排行榜信息给控制台
+                        getLogger().info("----------玩家等级排行榜----------");
+                        for (String entry : leaderboard) {
+                            getLogger().info(entry);
+                        }
+                        resultSet.close();
+                        statement.close();
+                    }
+                    catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+            // 当服务器终端未输入参数时，则向终端发送错误反馈
+            else {
+                getLogger().error("请输入正确的参数！");
+                return false;
+            }
+        }
+        closeMySQL();
+        return false;
     }
 
+
     @Override
-    public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
+    public @Nullable List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
         if (args.length == 1) {
-            List<String> completions = new ArrayList<>();
-            completions.add("list");
-            completions.add("player");
-            return completions;
+            List<String> list = new ArrayList<>();
+            list.add("list");
+            return list;
         }
-        if (args.length == 2 && args[0].equals("player")) {
-            List<String> onlinePlayers = new ArrayList<>();
-            for (Player player : Bukkit.getServer().getOnlinePlayers()) {
-                onlinePlayers.add(player.getName());
+        return null;
+    }
+
+    // 连接数据库
+    public void lineMySQL() {
+        try {
+            connection = DriverManager.getConnection(url, username, password);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // 关闭数据库
+    public void closeMySQL() {
+        try {
+            if (connection != null && !connection.isClosed()) {
+                connection.close();
             }
-            return onlinePlayers;
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        return Collections.emptyList();
     }
 }
