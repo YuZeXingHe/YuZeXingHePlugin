@@ -39,8 +39,8 @@ player_listenter: true
 # 数据库相关（关闭服务器再手动改，不会安装MySQL就百度一下）
 username: root
 password: 123456
-# 最后的YuZeXingHePlugin是对标你的数据库名称（例如：如果你的数据库名称是ABC，则将YuZeXingHePlugin换成ABC即可。注意：在MySQL中自行创建表格，不会则将YuZeXingHePlugin换成mysql即可！）
-url: jdbc:mysql://localhost:3306/YuZeXingHePlugin
+# 最后的YuZeXingHePlugin是对标你的数据库名称（例如：如果你的数据库名称是ABC，则将mysql换成ABC即可。注意：在MySQL中自行创建表格，不会则将YuZeXingHePlugin换成mysql即可！）
+url: jdbc:mysql://localhost:3306/mysql
 
 # 经验获取（等级系统），玩家能够获得多少经验
 blockbreakExperience: 1
@@ -48,8 +48,8 @@ killedCreaturesExperience: 1
 # 玩家破坏多少方块能获得活跃经验（例如：1000个则设定999）
 blockbreak: 999
 # 玩家击杀多少生物能获得活跃经验（例如：150个则设定149）
-killedCreatures: 1
+killedCreatures: 149
 # 玩家需要多少经验升级（例如：500经验则设定500）
-LevelUp: 1
+LevelUp: 500
 # 最大活跃等级限制（例如：5级就设定为5）
 MaxLevel: 5
