@@ -1,4 +1,5 @@
 com\yuzexingheplugin\ScoreBoard.class
+com\yuzexingheplugin\PlayerLevel\LevelConfig.class
 com\yuzexingheplugin\YuZeXingHePlugin$1.class
 com\yuzexingheplugin\PlayerLevel\LevelCommand.class
 com\yuzexingheplugin\Command\Commands.class

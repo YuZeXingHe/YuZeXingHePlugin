@@ -1,5 +1,5 @@
 name: YuZeXingHePlugin
-version: '1.9.1Beta-2'
+version: '1.9.1Beta-3'
 main: com.yuzexingheplugin.YuZeXingHePlugin
 api-version: '1.20'
 
@@ -11,3 +11,5 @@ commands:
     description: "配置文件修改和加载相关指令"
   level:
     description: "提供玩家等级和排行等查询"
+  levelconfig:
+    description: "修改等级相关配置文件"

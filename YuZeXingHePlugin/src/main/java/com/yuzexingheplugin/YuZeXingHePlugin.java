@@ -5,6 +5,7 @@ import com.yuzexingheplugin.Listener.SeverListener;
 import com.yuzexingheplugin.Command.Commands;
 import com.yuzexingheplugin.Command.config;
 import com.yuzexingheplugin.PlayerLevel.LevelCommand;
+import com.yuzexingheplugin.PlayerLevel.LevelConfig;
 import com.yuzexingheplugin.PlayerLevel.LevelListener;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -18,7 +19,7 @@ import java.sql.*;
 
 public final class YuZeXingHePlugin extends JavaPlugin implements Listener {
     private static YuZeXingHePlugin instance;
-    String version = "1.9.1Beta-2";
+    String version = "1.9.1Beta-3";
     private static Plugin plugin;
     static Connection connection;
 
@@ -62,10 +63,12 @@ public final class YuZeXingHePlugin extends JavaPlugin implements Listener {
         getCommand("open").setExecutor(new Commands());
         getCommand("configs").setExecutor(new config());
         getCommand("level").setExecutor(new LevelCommand());
+        getCommand("levelconfig").setExecutor(new LevelConfig());
         // 指令Tab补全存放处
         getCommand("open").setTabCompleter(new Commands());
         getCommand("configs").setTabCompleter(new config());
         getCommand("level").setTabCompleter(new LevelCommand());
+        getCommand("levelconfig").setTabCompleter(new LevelConfig());
         // 配置文件（保存）
         saveDefaultConfig();
 

@@ -150,9 +150,12 @@ public class Commands implements CommandExecutor, TabExecutor {
                 sender.sendMessage(ChatColor.AQUA + "/ui help：弹出本帮助。");
                 sender.sendMessage(ChatColor.DARK_AQUA + "/reg 密码 确认密码：注册指令，第一次进入必须要进行注册。");
                 sender.sendMessage(ChatColor.AQUA + "/login 密码：登录到服务器。");
+                sender.sendMessage(ChatColor.DARK_AQUA + "/level list：查询服务器等级排行前10位的玩家的等级。");
+                sender.sendMessage(ChatColor.AQUA + "/levelconfig help：打开等级功能设置帮助。");
                 if (player.isOp()) {
-                    sender.sendMessage(ChatColor.DARK_AQUA + "/uiconfig start：加载配置文件（须在服务器中以管理员身份使用该指令）。");
-                    sender.sendMessage(ChatColor.AQUA + "/uiconfig change：修改配置文件（须在服务器中以管理员身份使用该指令）。");
+                    sender.sendMessage(ChatColor.GREEN + "-----管理员相关-----");
+                    sender.sendMessage(ChatColor.AQUA + "/configs start：加载配置文件（须在服务器中以管理员身份使用该指令）。");
+                    sender.sendMessage(ChatColor.DARK_AQUA + "/configs change：修改配置文件（须在服务器中以管理员身份使用该指令）。");
                 }
                 return true;
             }
