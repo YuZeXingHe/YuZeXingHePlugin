@@ -132,7 +132,7 @@ public class SeverListener implements Listener {
                     }
 
                     // UI界面：清空自己的背包（所有玩家）
-                    else if (left_click.getRawSlot() == 53) {
+                    else if (left_click.getRawSlot() == 9) {
                         player.getInventory().clear();
                         player.saveData();
                         player.sendMessage(ChatColor.RED + "成功清空你的背包！");

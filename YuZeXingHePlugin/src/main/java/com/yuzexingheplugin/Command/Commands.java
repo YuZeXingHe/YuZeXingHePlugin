@@ -137,7 +137,7 @@ public class Commands implements CommandExecutor, TabExecutor {
                 GUI.setItem(6, anvil);
                 GUI.setItem(7, chafting_table);
                 GUI.setItem(8, wooden_axe);
-                GUI.setItem(53, chest);
+                GUI.setItem(9, chest);
 
                 player.openInventory(GUI);
                 return true;

@@ -19,7 +19,7 @@ import java.sql.*;
 
 public final class YuZeXingHePlugin extends JavaPlugin implements Listener {
     private static YuZeXingHePlugin instance;
-    String version = "1.9.1Beta-3";
+    String version = "1.9.1";
     private static Plugin plugin;
     static Connection connection;
 
@@ -52,7 +52,6 @@ public final class YuZeXingHePlugin extends JavaPlugin implements Listener {
         catch (SQLException e) {
             e.printStackTrace();
         }
-
 
         // 监听器存放处
         getServer().getPluginManager().registerEvents(new SeverListener(), this);
