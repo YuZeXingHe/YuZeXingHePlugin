@@ -5,7 +5,7 @@
     Expansion-LuckPerms：https://ci.lucko.me/job/LuckPermsPlaceholders/
     PlaceholderAPI：https://www.spigotmc.org/resources/placeholderapi.6245/
     LuckPerms：https://luckperms.net/
-前置插件安装方式：先将PlaceholderAPI，LuckPerm放入服务器中的 plugins文件夹并启动服务器，服务器启动完成后关闭服务器。在关闭服务器后，您可以在plugins/PlaceholderAPI/expansions中加入第三个前置插件：Expansion-LuckPerms。最后启动您的服务器即可。
+前置插件安装方式：您需要先将PlaceholderAPI，LuckPerm放入服务器中的 plugins文件夹并启动服务器，然后就需要等待您的服务器启动完成，服务器启动完成后再关闭您的服务器。在您的服务器关闭后，您应该可以在plugins/PlaceholderAPI/expansions中加入第三个前置插件：Expansion-LuckPerms。最后启动您的服务器即可。
 ### 重要：数据库导入和更新1.9.1版本后需要做的事
     MySQL官网：https://www.mysql.com/
 在更新1.9.1版本后，您将需要MySQL的支持。请您自行前往百度搜索MySQL如何下载和安装，以便您能支持最新的等级系统。在您更新1.9.1版本插件后，您需要删除原来plugins文件夹中关于本插件所有的配置文件，以便插件能够重新生成新的配置文件。
