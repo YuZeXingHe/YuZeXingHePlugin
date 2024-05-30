@@ -14,4 +14,4 @@ commands:
   level:
     description: "提供玩家等级和排行等查询"
   levelconfig:
-    description: "修改等级相关配置文件"
+    description: "修改等级相关配置"

@@ -29,6 +29,9 @@ public class SeverListener implements Listener {
     public static Plugin pl = com.yuzexingheplugin.YuZeXingHePlugin.getProvidingPlugin(com.yuzexingheplugin.YuZeXingHePlugin.class);
     String hand = "[YuZeXingHePlugin]";
 
+    // Tab页眉标签内容
+    String TabTitle = pl.getConfig().getString("TabTitle");
+
     // UI界面监听开关
     public static boolean All_UI() {
         return pl.getConfig().getBoolean("all_ui");
@@ -173,7 +176,7 @@ public class SeverListener implements Listener {
                 if (plugin.isPAPIEnabled()) {
                     player.setPlayerListName(Color.parseColour(PlaceholderAPI.setPlaceholders(player, "%luckperms_prefix%" + player_name + "%luckperms_suffix%")));
                 }
-                player.setPlayerListHeader(ChatColor.AQUA + "欢迎加入轻语生存服务器");
+                player.setPlayerListHeader(ChatColor.AQUA + TabTitle);
             }
         }
     }

@@ -53,3 +53,6 @@ killedCreatures: 149
 LevelUp: 500
 # 最大活跃等级限制（例如：5级就设定为5）
 MaxLevel: 5
+
+#设置TAB栏上方显示的字样
+TabTitle: "轻语生存服"
