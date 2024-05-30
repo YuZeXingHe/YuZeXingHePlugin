@@ -3,6 +3,8 @@ version: '${project.version}'
 main: com.yuzexingheplugin.YuZeXingHePlugin
 api-version: '1.20'
 
+softdepend:
+  - PlaceholderAPI
 
 commands:
   open:

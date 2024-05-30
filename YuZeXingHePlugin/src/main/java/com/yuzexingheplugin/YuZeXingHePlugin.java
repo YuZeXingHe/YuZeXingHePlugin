@@ -19,9 +19,11 @@ import java.sql.*;
 
 public final class YuZeXingHePlugin extends JavaPlugin implements Listener {
     private static YuZeXingHePlugin instance;
-    String version = "1.9.1";
+    String version = "1.9.2";
     private static Plugin plugin;
     static Connection connection;
+
+    private boolean papiEnabled;
 
     @Override
     public void onEnable() {
@@ -29,6 +31,11 @@ public final class YuZeXingHePlugin extends JavaPlugin implements Listener {
         getLogger().info("插件成功运行，感谢您使用YuZeXingHePlugin！开发者：YuZeXingHe！");
         getLogger().info("当前插件版本：" + version + "插件支持版本：1.20.1----1.20.4");
         getLogger().info("如果您在使用过程中发现任何Bug，请在GitHub中联系插件开发者！");
+
+        if (getServer().getPluginManager().isPluginEnabled("PlaceholderAPI")) {
+            papiEnabled = true;
+        }
+
 
         plugin = getProvidingPlugin(YuZeXingHePlugin.class);
 
@@ -54,7 +61,7 @@ public final class YuZeXingHePlugin extends JavaPlugin implements Listener {
         }
 
         // 监听器存放处
-        getServer().getPluginManager().registerEvents(new SeverListener(), this);
+        getServer().getPluginManager().registerEvents(new SeverListener(this), this);
         getServer().getPluginManager().registerEvents(new PlayerListener(), this);
         getServer().getPluginManager().registerEvents(this, this);
         getServer().getPluginManager().registerEvents(new LevelListener(), this);
@@ -204,5 +211,10 @@ public final class YuZeXingHePlugin extends JavaPlugin implements Listener {
         catch(Exception e) {
             e.printStackTrace();
         }
+    }
+
+    // PAPI
+    public boolean isPAPIEnabled() {
+        return papiEnabled;
     }
 }

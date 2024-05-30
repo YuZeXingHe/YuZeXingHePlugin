@@ -2,6 +2,8 @@ package com.yuzexingheplugin.Listener;
 
 import com.yuzexingheplugin.YuZeXingHePlugin;
 import io.papermc.paper.event.player.PlayerDeepSleepEvent;
+import me.clip.placeholderapi.PlaceholderAPI;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
@@ -14,8 +16,15 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.Plugin;
+import org.w3c.dom.Text;
+import com.yuzexingheplugin.Color;
 
 public class SeverListener implements Listener {
+
+    private final YuZeXingHePlugin plugin;
+    public SeverListener(YuZeXingHePlugin plugin) {
+        this.plugin = plugin;
+    }
 
     public static Plugin pl = com.yuzexingheplugin.YuZeXingHePlugin.getProvidingPlugin(com.yuzexingheplugin.YuZeXingHePlugin.class);
     String hand = "[YuZeXingHePlugin]";
@@ -160,6 +169,11 @@ public class SeverListener implements Listener {
                 String player_name = player.getName();
                 event.setJoinMessage(ChatColor.YELLOW + "加入服务器：欢迎" + ChatColor.AQUA + player_name + ChatColor.YELLOW + "加入服务器！");
                 player.sendMessage(ChatColor.YELLOW + "使用/ui help来查看必要指令帮助！");
+
+                if (plugin.isPAPIEnabled()) {
+                    player.setPlayerListName(Color.parseColour(PlaceholderAPI.setPlaceholders(player, "%luckperms_prefix%" + player_name + "%luckperms_suffix%")));
+                }
+                player.setPlayerListHeader(ChatColor.AQUA + "欢迎加入轻语生存服务器");
             }
         }
     }
@@ -187,7 +201,8 @@ public class SeverListener implements Listener {
                 Location playerLocation = player.getLocation();
                 if (deathCount <= 1) {
                     event.setDeathMessage(ChatColor.YELLOW + "死亡消息：" + player_name + "给自己玩没了，服务器直接笑TA！当前死亡次数：" + deathCount);
-                } else {
+                }
+                else {
                     event.setDeathMessage(ChatColor.YELLOW + "死亡消息：" + player_name + "又给自己玩没了，服务器已经笑岔气了！当前死亡次数：" + deathCount);
                 }
             }

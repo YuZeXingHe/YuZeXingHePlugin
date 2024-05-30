@@ -1,8 +1,10 @@
 name: YuZeXingHePlugin
-version: '1.9.1'
+version: '1.9.2'
 main: com.yuzexingheplugin.YuZeXingHePlugin
 api-version: '1.20'
 
+softdepend:
+  - PlaceholderAPI
 
 commands:
   open:
